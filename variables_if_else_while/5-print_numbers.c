@@ -6,8 +6,7 @@ int main(void)
 
     while (number <= 9)
     {
-        printf("%d\n", number);
-        number++;
+        printf("%d\n", number, number++);
     }
 
     return 0;
