@@ -1,21 +1,16 @@
-#include<stdio.h>
+#include <stdio.h>
 
-/**
- * main - Entry point
- *
- * Return: 0
- *
- */
-
-
-int main(void) 
-
+int main(void)
 {
+    char letter;
 
-	int c;
-	for (c = 'z'; c >= 'a'; --c) {
-		printf("%c ", c);
-	}
-	printf("\n");
+    for (letter = 'z'; letter >= 'a'; letter--)
+    {
+        putchar(letter);
+    }
 
+    putchar('\n');
+
+    return 0;
 }
+
