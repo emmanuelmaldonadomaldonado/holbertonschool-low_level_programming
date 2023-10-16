@@ -8,7 +8,9 @@
  */
 
 
-int main() {
+int main(void) 
+
+{
 
 	int c;
 	for (c = 'z'; c >= 'a'; --c) {
