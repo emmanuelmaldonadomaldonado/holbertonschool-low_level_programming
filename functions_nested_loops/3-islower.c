@@ -2,9 +2,9 @@
 
 /**
  * _islower - Entry point
- *@c: check 
+ * @c: value to analize
  *
- * Return: 1 if lower, 0 if not
+ * Return: 1 when lowercase, 0 if not
  */
 
 int _islower(int c)
