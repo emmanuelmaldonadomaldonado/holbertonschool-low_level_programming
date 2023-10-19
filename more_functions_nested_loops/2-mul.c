@@ -1,13 +1,12 @@
+#include <stdio.h>
 #include "main.h"
-
 /**
- * mul - Entry point
- * @c: character to verify
- *
- * Return: a * b
- */
-
-int mul(int a, int b) 
+* mul - multiplies two integers
+* @a: first integer
+* @b: second integer
+* Return: addition of a and b
+*/
+int mul(int a, int b)
 {
 	return (a * b);
 }
