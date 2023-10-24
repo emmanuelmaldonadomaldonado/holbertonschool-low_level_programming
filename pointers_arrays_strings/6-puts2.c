@@ -1,19 +1,21 @@
 #include "main.h"
 
 /**
- * puts2 - Writes a character to stdout.
- * @str: value to check
+ * puts2 - a function that takes a pointer to an int as parameter and
+ * @str: chaine of caractere
  *
+ * Return: 1 or 0
  */
 
 void puts2(char *str)
 {
 	int i = 0;
 
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		_putchar(str[i]);
-		_putchar('\n');
-		i += 2;
+		if (i % 2 == 0)
+			_putchar(str[i]);
+		i++;
 	}
+	_putchar('\n');
 }
