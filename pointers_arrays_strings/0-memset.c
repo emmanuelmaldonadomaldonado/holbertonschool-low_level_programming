@@ -19,17 +19,3 @@ char *_memset(char *s, char b, unsigned int n)
 
 	return s;
 }
-
-int main(void)
-{
-	char buffer[10];
-	char *result = _memset(buffer, 'A', 5);
-
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%c ", buffer[i]);
-	}
-
-	return (0);
-}
-
