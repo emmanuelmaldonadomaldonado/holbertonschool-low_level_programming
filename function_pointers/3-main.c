@@ -1,13 +1,7 @@
-#include "3-calc.h"
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * main - Entry point for the calculator program.
- * @argc: The number of command-line arguments.
- * @argv: An array containing the command-line arguments.
- *
- * Return: Always 0 (success).
- */
+#include "3-calc.h"
+
 int main(int argc, char *argv[])
 {
     int num1, num2, result;
@@ -16,7 +10,7 @@ int main(int argc, char *argv[])
     if (argc != 4)
     {
         printf("Error\n");
-        return 98; /* Return an error code */
+        return 98;
     }
 
     num1 = atoi(argv[1]);
@@ -27,7 +21,7 @@ int main(int argc, char *argv[])
     if (operation == NULL)
     {
         printf("Error\n");
-        return 99; /* Return an error code */
+        return 99;
     }
 
     result = operation(num1, num2);

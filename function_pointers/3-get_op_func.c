@@ -8,7 +8,7 @@
  * Return: A pointer to the function that corresponds to the operator.
  *         If the operator is not recognized, return NULL.
  */
-int (*get_op_func(char *s))(int, int)
+int (*get_op_func(char *s __attribute__((unused))))(int, int)
 {
     op_t ops[] = {
         {"+", op_add},
