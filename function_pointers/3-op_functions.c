@@ -53,20 +53,18 @@ int op_div(int a, int b)
 }
 
 /**
- * op_mod - Returns the remainder of the division of a by b.
- * @a: The numerator.
- * @b: The denominator.
+ * op_mod - Computes the remainder of the division of two integers.
+ * @a: The dividend.
+ * @b: The divisor.
  *
- * Return: The remainder of the division of a by b.
+ * Return: The remainder of the division.
  */
 int op_mod(int a, int b)
 {
-    if (b != 0)
-        return a % b;
-    else
+    if (b == 0)
     {
-        /* Handle modulo by zero */
-        return 0; /* You might want to choose a different approach here */
+        printf("Error\n");
+        exit(100);
     }
+    return a % b;
 }
-
