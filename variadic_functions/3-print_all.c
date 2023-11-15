@@ -1,96 +1,83 @@
-#include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include <string.h>
+#include "variadic_functions.h"
 /**
- * printf_char - printfs a char from var args
- *
- * @list: va_list to print from
- *
- * Return: void
+ * print_c - prints chars
+ * @my_args: pointer to args
  */
-void printf_char(va_list list)
+void print_c(va_list *my_args)
 {
-	printf("%c", (char) va_arg(list, int));
+	printf("%c", va_arg(*my_args, int));
 }
-
 /**
- * printf_int - printfs an int from var args
- *
- * @list: va_list to print from
- *
- * Return: void
+ * print_i - prints ints
+ * @my_args: pointer to args
  */
-void printf_int(va_list list)
+void print_i(va_list *my_args)
 {
-	printf("%d", va_arg(list, int));
+	printf("%d", va_arg(*my_args, int));
 }
-
 /**
- * printf_float - printfs a float from var args
- *
- * @list: va_list to print from
- *
- * Return: void
+ * print_f - prints floats
+ * @my_args: pointer to args
  */
-void printf_float(va_list list)
+void print_f(va_list *my_args)
 {
-	printf("%f", (float) va_arg(list, double));
+	printf("%f", va_arg(*my_args, double));
 }
-
 /**
- * printf_string - printfs a string from var args
- *
- * @list: va_list to print from
- *
- * Return: void
+ * print_s - prints strings
+ * @my_args: pointer to args
  */
-void printf_string(va_list list)
+void print_s(va_list *my_args)
 {
-	char *str = va_arg(list, char*);
+	char *current_str;
 
-	while (str != NULL)
-	{
-		printf("%s", str);
-		return;
-	}
-	printf("(nil)");
+	current_str = va_arg(*my_args, char *);
+	if (current_str == NULL)
+		current_str = "(nil)";
+	printf("%s", current_str);
 }
-
-
 /**
- * print_all - prints various types given a format string for the arguments
- *
- * @format: string containing type information for args
+ * print_all - prints everything
+ * @format: constant format string
  *
  * Return: void
  */
+
 void print_all(const char * const format, ...)
 {
-	const char *ptr;
-	va_list list;
-	funckey key[4] = { {printf_char, 'c'}, {printf_int, 'i'},
-			   {printf_float, 'f'}, {printf_string, 's'} };
-	int keyind = 0, notfirst = 0;
+	int i = 0, j = 0;
+	va_list my_args;
+	char *separator = ""; /*Prnt before prnts from functions,except last one */
+	data my_data[] = {
+		{"c", print_c},
+		{"i", print_i},
+		{"f", print_f},
+		{"s", print_s},
+		{NULL, NULL} /*letter-type, (function*) */
+	};/*Struct char *type, void (*f)()*/
 
-	ptr = format;
-	va_start(list, format);
-	while (format != NULL && *ptr)
+	va_start(my_args, format);
+
+	while (format != NULL && format[i] != '\0')/*lettrs exist in format,not null*/
 	{
-		if (key[keyind].spec == *ptr)
+		j = 0;
+		while (my_data[j].f != NULL)/*still have functions to call*/
 		{
-			if (notfirst)
-				printf(", ");
-			notfirst = 1;
-			key[keyind].f(list);
-			ptr++;
-			keyind = -1;
+			if (*my_data[j].type == format[i])/*match letters = data type */
+			{
+				printf("%s", separator);/*prnts before function, last print has no sep*/
+				my_data[j].f(my_args);/*call matching print function */
+				separator = ", ";/*set value after 1st print*/
+				break;
+			}
+			j++;
 		}
-		keyind++;
-		ptr += keyind / 4;
-		keyind %= 4;
+		i++;
 	}
-	printf("\n");
 
-	va_end(list);
+	va_end(my_args);
+	printf("\n");
 }
