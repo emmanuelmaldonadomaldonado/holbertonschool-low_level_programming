@@ -2,11 +2,19 @@
 #define LISTS_H
 
 #include <stddef.h>
-
-typedef struct list_t {
-    char *str;
-    size_t len;
-    struct list_t *next;
+/**
+ * struct list_t - singly linked list
+ * @len: length of the string
+ * @str: string data
+ * @next: points to the next node in the list
+ *
+ * Description: singly linked list node structure
+ */
+typedef struct list_t
+{
+	char *str;
+	size_t len;
+	struct list_t *next;
 } list_t;
 
 /* Function prototype */
