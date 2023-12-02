@@ -10,12 +10,12 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	/* Check if the index is greater than the number of bits in unsigned long int */
+	/* Check if the index is greater than the number of bits*/
 	if (index >= sizeof(unsigned long int) * 8)
-		return -1;
+		return (-1);
 
 	/* Use bitwise OR to set the bit at the specified index to 1 */
 	*n |= (1UL << index);
 
-	return 1;
+	return (1);
 }
