@@ -3,7 +3,8 @@
 #include "search_algos.h"
 
 /**
- * binary_search - Search for a value in a sorted array using Binary Search algorithm
+ * binary_search - Search for a value in a sorted array
+ * using Binary Search algorithm
  * @array: Pointer to the first element of the array to search in
  * @size: Number of elements in the array
  * @value: Value to search for
@@ -12,33 +13,33 @@
  */
 int binary_search(int *array, size_t size, int value)
 {
-    int left = 0, right = size - 1;
-    int i;
+	int left = 0, right = size - 1;
+	int i;
 
-    if (array == NULL)
-        return -1;
+	if (array == NULL)
+		return (-1);
 
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
+	while (left <= right)
+	{
+		int mid = left + (right - left) / 2;
 
-        printf("Searching in array: ");
-        for (i = left; i <= right; i++)
-        {
-            printf("%d", array[i]);
-            if (i < right)
-                printf(", ");
-        }
-        printf("\n");
+		printf("Searching in array: ");
 
-        if (array[mid] == value)
-            return mid;
+		for (i = left; i <= right; i++)
+		{
+			printf("%d", array[i]);
 
-        if (array[mid] < value)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
+			if (i < right)
+				printf(", ");
+		}
+		printf("\n");
 
-    return -1;
+		if (array[mid] == value)
+			return (mid);
+		if (array[mid] < value)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	return (-1);
 }
